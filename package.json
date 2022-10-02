@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "dev": "env-cmd nodemon src/index.ts",
-    "start": "env-cmd ts-node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

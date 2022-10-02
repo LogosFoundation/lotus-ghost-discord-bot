@@ -15,6 +15,15 @@ export function createServer(bot: Client, ghostAPIClient: GhostAdminAPI) {
 
   app.use(express.json({ limit: '5mb' }));
 
+  app.get('/', async (req, res) => {
+    try {
+      healthCheck(bot);
+      res.send('ok');
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
+
   app.get(
     '/auth/discord/return',
     asyncHandler(async (req, res) => {
@@ -222,3 +231,9 @@ async function updateMemberRole(
     await user.roles.remove(role);
   }
 }
+
+const healthCheck = (discordBot: Client<boolean>) => async () => {
+  if (!discordBot.isReady()) {
+    throw new Error('Discord client is not ready');
+  }
+};
