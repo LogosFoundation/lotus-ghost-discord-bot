@@ -6,7 +6,7 @@ import { createServer } from './server';
 const start = async () => {
   console.log('Starting');
 
-  const bot = createBot();
+  const bot = createBot(ghostAPIClient);
   await bot.login(env.DISCORD_BOT_TOKEN);
 
   console.log('Discord bot logged in');

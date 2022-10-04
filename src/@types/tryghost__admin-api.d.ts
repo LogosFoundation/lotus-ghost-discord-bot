@@ -20,7 +20,7 @@ declare module '@tryghost/admin-api' {
 
     export interface BrowseOptions {
       filter?: string;
-      limit?: number;
+      limit?: number | 'all';
     }
 
     export interface ReadOptions {
